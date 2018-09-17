@@ -46,4 +46,5 @@ Let's extract a column with `$`. Maybe compute its variance.
 
 ```{r}
 gapminder$pop
+var(gapminder$pop)
 ```
