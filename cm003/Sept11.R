@@ -91,4 +91,4 @@ if(variance > 10) print ("yes") else print ("no")
 #     errors -- this happens when we rely too heavily on interactivity.
 
 #run the whole script from top to bottom
-source('~/R Studio/STAT545/Sept11.R')
+source('~/R Studio/stat545_participation/cm003/Sept11.R')
