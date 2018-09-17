@@ -1,3 +1,3 @@
-# New Exploration
+# In-Class Participation
 
-This repo is part of a STAT 545 exercise to explore GitHub and markdown.
+This repository consists of the in-class STAT 545 exercises which explore GitHub and markdown.
