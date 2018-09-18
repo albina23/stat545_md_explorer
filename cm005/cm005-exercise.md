@@ -380,7 +380,6 @@ gapminder %>%
 ## # ... with 42 more rows
 ```
 
-
 Knit, commit, push!
 
 # Break/Challenge: metaprogramming
@@ -398,7 +397,7 @@ if (my_commute > 30) {
 }
 ```
 
-Your task is to use metaprogramming to check whether a response (like the one above) works and contains an `if` statement. You should roughly follow these steps, using [adv-r: expressions](https://adv-r.hadley.nz/expressions.html) as a resource (especially Section 18.1).
+Your task is to use metaprogramming to check whether a response (like the one above) works and contains an `if` statement. You should roughly follow these asteps, using [adv-r: expressions](https://adv-r.hadley.nz/expressions.html) as a resource (especially Section 18.1).
 
 1. Wrap the above block of code in the `expr()` function from the `rlang` package.
 2. Use the `eval()` function to execute the code, to see if the code runs.
@@ -407,6 +406,22 @@ Your task is to use metaprogramming to check whether a response (like the one ab
 # Relational/Comparison and Logical Operators in R
 
 1. Find all entries of Canada and Algeria occuring in the '60s. 
+
+```r
+gapminder %>% 
+  filter((country=="Canada"| country=="Algeria") & year>1960 & year<1970)
+```
+
+```
+## # A tibble: 4 x 6
+##   country continent  year lifeExp      pop gdpPercap
+##   <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
+## 1 Algeria Africa     1962    48.3 11000948     2551.
+## 2 Algeria Africa     1967    51.4 12760499     3247.
+## 3 Canada  Americas   1962    71.3 18985849    13462.
+## 4 Canada  Americas   1967    72.1 20819767    16077.
+```
+
 
 2. Find all entries of Canada, and entries of Algeria occuring in the '60s. 
 3. Find all entries _not_ including Canada and Algeria.
