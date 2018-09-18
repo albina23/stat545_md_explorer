@@ -1,8 +1,8 @@
 ---
 title: 'cm005: `dplyr` Exercise'
-output: html_notebook
-editor_options: 
-  chunk_output_type: inline
+output:
+  html_document:
+    keep_md: true
 ---
 
 **Optional, but recommended startup**:
@@ -11,39 +11,100 @@ Change the file output to both html and md _documents_ (not notebook).
 
 # Intro to `dplyr` syntax
 
+# install tidyverse package using the command install.packages("tidyverse") 
+   
 1. Load the `gapminder` and `tidyverse` packages. Hint: `suppressPackageStartupMessages()`!
     - This loads `dplyr`, too.
+
+```{r}
+library(gapminder)
+library(tidyverse)
+```
+
+
 2. `knit` the document. 
 
-## `select()`
+## `select()` selects certain columns
 
 1. Make a data frame containing the columns `year`, `lifeExp`, `country` from the gapminder data, in that order.
 
+```{r}
+select(gapminder, year, lifeExp, country)
+```
+
+
 2. Select all variables, from `country` to `lifeExp`. 
+
+```{r}
+select(gapminder, country:lifeExp)
+```
 
 3. Select all variables, except `lifeExp`.
 
+```{r}
+select(gapminder, -lifeExp)
+a <- select(gapminder, -lifeExp)
+```
+
+
 4. Put `continent` first. Hint: use the `everything()` function.
+
+```{r}
+select(gapminder, continent, everything())
+
+```
+
 
 5. Rename `continent` to `cont`.
 
+```{r}
+rename(gapminder, cont=continent)
+```
+
+
 ## `arrange()`
 
-1. Order by year.
+1. Order by life expectancy
 
-2. Order by year, in descending order.
+```{r}
+arrange(gapminder, lifeExp)
+```
 
-3. Order by year, then by life expectancy.
 
-## Piping, `%>%`
+2. Order by life expectancy, in descending order
+```{r}
+arrange(gapminder, desc(lifeExp))
+```
+
+
+3. Order by year, then by life expectancy
+
+```{r}
+arrange(gapminder, year, lifeExp)
+```
+
+## Piping, `%>%` (Ctrl Shift M) using the outcome of funciton 1 as an input in function 2
 
 Note: think of `%>%` as the word "then"!
 
 1. Combine `select()` Task 1 with `arrange()` Task 3.
 
-## `filter()`
+```{r}
+gapminder %>% 
+  select(year, lifeExp, country) %>% 
+  arrange(year, lifeExp)
+```
+
+
+## `filter()` selects certain rows
 
 1. Only take data with population greater than 100 million.
+
+```{r}
+gapminder %>% 
+  filter( pop > 100000000)
+```
+
 
 2. Of those, only take data from Asia.
 
