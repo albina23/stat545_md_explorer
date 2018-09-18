@@ -109,6 +109,12 @@ gapminder %>%
 2. Of those, only take data from Asia.
 
 ## git stuff (Optional)
+```{r}
+gapminder %>% 
+  filter( pop > 100000000) %>% 
+  filter(continent == "Asia")
+```
+
 
 Knit, commit, push!
 

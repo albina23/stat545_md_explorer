@@ -357,6 +357,30 @@ gapminder %>%
 
 ## git stuff (Optional)
 
+```r
+gapminder %>% 
+  filter( pop > 100000000) %>% 
+  filter(continent == "Asia")
+```
+
+```
+## # A tibble: 52 x 6
+##    country    continent  year lifeExp       pop gdpPercap
+##    <fct>      <fct>     <int>   <dbl>     <int>     <dbl>
+##  1 Bangladesh Asia       1987    52.8 103764241      752.
+##  2 Bangladesh Asia       1992    56.0 113704579      838.
+##  3 Bangladesh Asia       1997    59.4 123315288      973.
+##  4 Bangladesh Asia       2002    62.0 135656790     1136.
+##  5 Bangladesh Asia       2007    64.1 150448339     1391.
+##  6 China      Asia       1952    44   556263527      400.
+##  7 China      Asia       1957    50.5 637408000      576.
+##  8 China      Asia       1962    44.5 665770000      488.
+##  9 China      Asia       1967    58.4 754550000      613.
+## 10 China      Asia       1972    63.1 862030000      677.
+## # ... with 42 more rows
+```
+
+
 Knit, commit, push!
 
 # Break/Challenge: metaprogramming
