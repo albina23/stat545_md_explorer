@@ -243,13 +243,16 @@ gapminder %>%
 ```{r}
 c <- ggplot(gapminder, aes(year, lifeExp))
 c+ geom_line()
-c+geom_line(aes(group=country), alpha=0.2)
 ```
 
 
 4. Use the `group` aesthetic to fix the problem.
 
-
+```{r}
+c <- ggplot(gapminder, aes(year, lifeExp))
+c+ geom_line()
+c+geom_line(aes(group=country), alpha=0.2)
+```
 
 5. Optional: git stage and commit
 _
