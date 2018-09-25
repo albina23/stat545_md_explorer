@@ -155,14 +155,49 @@ Let's see how Rwanda's life expectancy and GDP per capita have evolved over time
 - Add `arrow=arrow()` option.
 - Add `geom_text`, with year label. 
 
+```{r}
+gapminder %>% 
+  filter(country=="Rwanda") %>% 
+  arrange(year) %>% 
+  ggplot(aes(gdpPercap, lifeExp)) +
+  geom_point()+
+  geom_path(arrow=arrow())
+```
+
+
 
 ## Two categorical variables
 
+
 Try `cyl` (number of cylinders) ~ `am` (transmission) in the `mtcars` data frame.
 
+```{r}
+ggplot(mtcars, aes(cyl, am))+
+  geom_point()
+```
+
+
 - Scatterplot? Jitterplot? No.
+
+```{r}
+ggplot(mtcars, aes(cyl, am))+
+  geom_jitter()
+```
+
 - `geom_count()`.
+
+```{r}
+ggplot(mtcars, aes(cyl, am))+
+  geom_count(color="blue")
+```
+
 - `geom_bin2d()`. Compare with `geom_tile()` with `fill` aes.
+
+```{r}
+ggplot(mtcars, aes(factor(cyl), factor(am)))+
+  geom_bin2d()
+```
+
 
 ## Overplotting
 
@@ -173,12 +208,31 @@ Try a scatterplot with:
 - `geom_density2d()`
 - `geom_smooth()`
 
+```{r}
+gvsl+ geom_density2d()
+```
+
+```{r}
+gvsl+geom_point(alpha=0.1)+geom_smooth()
+```
+
+Plot linear regression model
+```{r}
+gvsl+geom_point(alpha=0.1)+geom_smooth(method="lm")
+```
 
 ## Bar plots
 
 How many countries are in each continent? Use the year 2007.
 
 1. After filtering the gapminder data to 2007, make a bar chart of the number of countries in each continent. Store everything except the geom in the variable `d`.
+
+```{r}
+gapminder %>% 
+  filter(year==2007) %>% 
+  ggplot(aes(continent)) +
+  geom_bar(fill="orange")
+```
 
 
 
@@ -193,6 +247,9 @@ __Uses of bar plots__: Get a sense of relative quantities of categories, or see 
 ## Polar coordinates
 
 - Add `coord_polar()` to a scatterplot.
+```{r}
+gvsl + geom_point() + coord_polar()
+```
 
 
 # Want more practice?

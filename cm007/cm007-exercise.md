@@ -231,14 +231,57 @@ Let's see how Rwanda's life expectancy and GDP per capita have evolved over time
 -   Add `arrow=arrow()` option.
 -   Add `geom_text`, with year label.
 
+``` r
+gapminder %>% 
+  filter(country=="Rwanda") %>% 
+  arrange(year) %>% 
+  ggplot(aes(gdpPercap, lifeExp)) +
+  geom_point()+
+  geom_path(arrow=arrow())
+```
+
+    ## Warning: package 'bindrcpp' was built under R version 3.5.1
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-17-1.png)
+
 Two categorical variables
 -------------------------
 
 Try `cyl` (number of cylinders) ~ `am` (transmission) in the `mtcars` data frame.
 
+``` r
+ggplot(mtcars, aes(cyl, am))+
+  geom_point()
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-18-1.png)
+
 -   Scatterplot? Jitterplot? No.
+
+``` r
+ggplot(mtcars, aes(cyl, am))+
+  geom_jitter()
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-19-1.png)
+
 -   `geom_count()`.
+
+``` r
+ggplot(mtcars, aes(cyl, am))+
+  geom_count(color="blue")
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-20-1.png)
+
 -   `geom_bin2d()`. Compare with `geom_tile()` with `fill` aes.
+
+``` r
+ggplot(mtcars, aes(factor(cyl), factor(am)))+
+  geom_bin2d()
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
 Overplotting
 ------------
@@ -250,6 +293,28 @@ Try a scatterplot with:
 -   `geom_density2d()`
 -   `geom_smooth()`
 
+``` r
+gvsl+ geom_density2d()
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-22-1.png)
+
+``` r
+gvsl+geom_point(alpha=0.1)+geom_smooth()
+```
+
+    ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-23-1.png)
+
+Plot linear regression model
+
+``` r
+gvsl+geom_point(alpha=0.1)+geom_smooth(method="lm")
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-24-1.png)
+
 Bar plots
 ---------
 
@@ -257,7 +322,16 @@ How many countries are in each continent? Use the year 2007.
 
 1.  After filtering the gapminder data to 2007, make a bar chart of the number of countries in each continent. Store everything except the geom in the variable `d`.
 
-2.  Notice the y-axis. Oddly, `ggplot2` doesn't make it obvious how to change to proportion. Try adding a `y` aesthetic: `y=..count../sum(..count..)`.
+``` r
+gapminder %>% 
+  filter(year==2007) %>% 
+  ggplot(aes(continent)) +
+  geom_bar(fill="orange")
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-25-1.png)
+
+1.  Notice the y-axis. Oddly, `ggplot2` doesn't make it obvious how to change to proportion. Try adding a `y` aesthetic: `y=..count../sum(..count..)`.
 
 **Uses of bar plots**: Get a sense of relative quantities of categories, or see the probability mass function of a categorical random variable.
 
@@ -265,6 +339,12 @@ Polar coordinates
 -----------------
 
 -   Add `coord_polar()` to a scatterplot.
+
+``` r
+gvsl + geom_point() + coord_polar()
+```
+
+![](cm007-exercise_files/figure-markdown_github/unnamed-chunk-26-1.png)
 
 Want more practice?
 ===================
