@@ -138,7 +138,7 @@ Vectors store multiple entries of a data type. You'll discover that they show up
 
 ### Vector Construction and Basic Subsetting
 
-We've seen vectors as columns of data frames: &gt; each column of a data frame is a vector
+We've seen vectors as columns of data frames:
 
 ``` r
 mtcars$hp
@@ -147,7 +147,7 @@ mtcars$hp
     ##  [1] 110 110  93 110 175 105 245  62  95 123 123 180 180 180 205 215 230
     ## [18]  66  52  65  97 150 150 245 175  66  91 113 264 175 335 109
 
-Use the `c()` function to make a vector consisting of the course code (`"STAT"` and `545`). Notice the coercion. Vectors must be homogeneous. &gt; can only hold 1 type of data, so here forcing 545 to string "545"
+Use the `c()` function to make a vector consisting of the course code (`"STAT"` and `545`). Notice the coercion. Vectors must be homogeneous.
 
 ``` r
 course <- c("stat", 545)
@@ -158,8 +158,6 @@ course
     ## [1] "stat" "545"
 
 Subset the first entry. Remove the first entry. Note the base-1 system.
-
-> other languages have base 0, so first entry would be \#0
 
 ``` r
 course[1]
@@ -198,7 +196,7 @@ course[c(3, 1)]
 
     ## [1] "S01"  "stat"
 
-Explore integer sequences, especially negatives and directions. Especially `1:0` that might show up in loops! &gt; if writing loops, want to make a vector of length 0: seq\_len(0) NOT 1:0
+Explore integer sequences, especially negatives and directions. Especially `1:0` that might show up in loops!
 
 ``` r
 3:10
@@ -214,8 +212,6 @@ Explore integer sequences, especially negatives and directions. Especially `1:0`
 
 Singletons are also vectors. Check using `is.vector`.
 
-> r doesn't destinguish between a vector and a single component
-
 ``` r
 is.vector(6)
 ```
@@ -227,8 +223,6 @@ a[1][1]
 ```
 
     ## [1] 3
-
-> string: single object, characters in quotation marks -- not a name used in R r calls strings "characters" vector: a bunch of objects stored in sequence every character object is a single object (e.g. "hi" has the same length as "hi, hello, hi, hello") so you can't subset to a portion of the string easily (e.g. easier to combine "hi" "you" to "hi you" than to separate into two)
 
 ### Vectorization and Recycling
 
@@ -253,8 +247,6 @@ a ^ 2
 ```
 
     ##  [1] 49 36 25 16  9  4  1  0  1  4
-
-> vectorization - you can do an operation to every entry of the vector easily
 
 Multiply each component by 1 through its length:
 
@@ -364,7 +356,7 @@ names(course)
 
     ## [1] "subject" "code"    "section"
 
-1.  Re-constructing the vector, specifying names within `c()`. &gt; can use c function to create vectors
+1.  Re-constructing the vector, specifying names within `c()`.
 
 ``` r
 course <- c(subject = "STAT", code = "545A", section = "S01")
@@ -414,7 +406,7 @@ Lists
 
 Unlike vectors, which are atomic/homogeneous, a list in R is heterogeneous.
 
-Try storing the course code (`"STAT"` and `545`) again, but this time in a list. Use the `list()` function. &gt; vectors can't have multiple object types, will coerce to least informative type (usually character) &gt; lists can!
+Try storing the course code (`"STAT"` and `545`) again, but this time in a list. Use the `list()` function.
 
 ``` r
 (course <- list("STAT", 545))
@@ -426,7 +418,7 @@ Try storing the course code (`"STAT"` and `545`) again, but this time in a list.
     ## [[2]]
     ## [1] 545
 
-Lists can hold pretty much anything, and can also be named. Let's use the following list: &gt; this list: year, instructor, a function are the components of the list e.g. the list is a train, components are the cars
+Lists can hold pretty much anything, and can also be named. Let's use the following list:
 
 ``` r
 (my_list <- list(year=2018, instructor=c("Vincenzo", "Coia"), fav_fun=typeof))
@@ -441,7 +433,7 @@ Lists can hold pretty much anything, and can also be named. Let's use the follow
     ## $fav_fun
     ## function (x) 
     ## .Internal(typeof(x))
-    ## <bytecode: 0x0000000012a74870>
+    ## <bytecode: 0x0000000012eee1b0>
     ## <environment: namespace:base>
 
 Subsetting a list works similarly to vectors. Try subsetting the first element of `my_list`; try subsettig the first *component* of the list. Notice the difference!
@@ -480,7 +472,7 @@ my_list$year
 
     ## [1] 2018
 
-Smells a little like `data.frame`s. It turns out a `data.frame` is a special type of list: &gt; list of named vectors, vector of each component must have the same length
+Smells a little like `data.frame`s. It turns out a `data.frame` is a special type of list:
 
 ``` r
 (small_df <- tibble::tibble(x=1:5, y=letters[1:5]))
