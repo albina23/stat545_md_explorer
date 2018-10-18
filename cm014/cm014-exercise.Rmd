@@ -140,6 +140,11 @@ tidy(my_lm)
 augment(my_lm)
 ```
 
+
+```{r}
+augment(my_lm, newdata=tibble(gdpPercap=c(400,500,600)))
+```
+
 ```{r}
 glance(my_lm)
 ```
